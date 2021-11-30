@@ -108,8 +108,8 @@ def capture_aad(migrationSourceUPNs):
                             migrationUPNs=migrationSourceUPNs)
 
     aadMemberships = load_aad_memberships(az_graph_rbac_client, aadUsers)
-    aadRoleAssignments = load_aad_role_assignments(
-        az_subscription_client, aadUsers)
+    # aadRoleAssignments = load_aad_role_assignments(
+    #     az_subscription_client, aadUsers)
 
     for i in range(0, len(migrationSourceUPNs)):
 
@@ -117,8 +117,9 @@ def capture_aad(migrationSourceUPNs):
 
         aadMemberships_extract = [
             x for x in aadMemberships if x['upn'].lower() == sourceUPN]
-        aadRoleAssignments_extract = [
-            x for x in aadRoleAssignments if x['upn'].lower() == sourceUPN]
+        # aadRoleAssignments_extract = [
+        #     x for x in aadRoleAssignments if x['upn'].lower() == sourceUPN]
+        aadRoleAssignments_extract = []
 
         aad_capture[sourceUPN] = {
             'aadMemberships': aadMemberships_extract,
