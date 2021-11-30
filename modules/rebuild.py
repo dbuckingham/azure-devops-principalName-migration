@@ -156,7 +156,7 @@ def process(aad: bool, azd: bool):
                     graph_user = azd_graph_client.create_user(new_graph_user,group_descriptors=groups)
                     printInfo(graph_user)
 
-                    if graph_user.principal_name != u['targetUPN']:
+                    if graph_user.principal_name.lower() != u['targetUPN']:
                         printException(
                             'AzD graph user created does not have matching principal name')
 
